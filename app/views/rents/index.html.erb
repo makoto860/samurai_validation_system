@@ -1,0 +1,27 @@
+<h1>rents/index.html.erb</h1>
+<h1>予約一覧</h1>
+<% @rents.each do |rent| %>
+  <table class="show-table">
+    <tr>
+      <th>部屋名</th>
+      <td><%= rent.room.name %></td>
+    </tr>
+    <tr>
+      <th>チェックイン</th>
+      <td><%= rent.check_in_date %></td>
+    </tr>
+    <tr>
+      <th>チェックアウト</th>
+      <td><%= rent.check_out_date %></td>
+    </tr>
+    <tr>
+      <th>支払い合計金額</th>
+      <td><%= rent.sum_of_amount %>円</td>
+    </tr>
+    <tr>
+      <th>予約した日にち</th>
+      <td><%= rent.created_at %></td>
+    </tr>
+    <p>--------------------------------------------------</p>
+  </table>
+<% end %>

@@ -1,0 +1,26 @@
+<h1>Rooms#index</h1>
+<p>Find me in app/views/rooms/index.html.erb</p>
+<h1>部屋情報一覧</h1>
+<table>
+  <thead>
+    <tr>
+      <th>ROOM ID</th>
+      <th>名前</th>
+      <th>金額</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <td><%= room.id %></td>
+        <td><%= room.name %></td>
+        <td><%= room.amount %></td>
+        <td><%= link_to "詳細", room %></td>
+        <td><%= link_to "編集", [:edit, room] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<p><%= link_to "部屋新規登録", :new_room %></p>
+<p><%= link_to "ホーム", :root %></p>

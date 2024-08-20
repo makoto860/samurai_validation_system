@@ -1,0 +1,20 @@
+<h1>app/views/rents/confirm.html.erb</h1>
+<h1>予約確認</h1>
+<h1>エラーメッセージの実装</h1>
+<%= render "layouts/errors", obj: @rent %>
+
+<p>部屋名: <%= @room.name %></p>
+<p>チェックイン: <%= @check_in_date %></p>
+<p>チェックアウト: <%= @check_out_date %></p>
+<p>合計人数: <%= @total_people %></p>
+<%= render "layouts/errors", obj: f.object %>
+
+<%= form_with url: rents_path, method: :post, local: true, data: { turbo: false } do |f| %>
+  <%= hidden_field_tag :room_id, @room.id %>
+  <%= hidden_field_tag :user_id, current_user.id %>
+  <%= f.hidden_field :check_in_date, value: @check_in_date, name: 'rent[check_in_date]' %>
+  <%= f.hidden_field :check_out_date, value: @check_out_date, name: 'rent[check_out_date]' %>
+  <%= f.hidden_field :total_people, value: @total_people, name: 'rent[total_people]' %>
+  <%= f.submit "予約を確定する" %>
+<% end %>
+<P><%= link_to "キャンセル", :back %></P>
